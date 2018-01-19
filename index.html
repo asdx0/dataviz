@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ashley dePreaux - Data Viz Final Project</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<style>
+	body {
+		font-family: sans-serif;
+	}
+	h2 {
+		text-align: center;
+	}
+	circle {
+		opacity: 0.7;
+	}
+	svg {
+		display: block;
+		margin: 30px auto;
+	}
+
+	.tooltip {
+		opacity: 0;
+		position: absolute;
+		pointer-events: none;
+		background-color: lightblue;
+		border: 4px solid navy;
+		border-radius: 8px;
+		padding: 10px;
+		font-size: 10px;
+	}
+
+	.tooltip p {
+		margin: 0;
+	}
+
+	.tooltip:before {
+		content: ' ';
+		position: absolute;
+		border: 12px solid transparent;
+		border-bottom-color: navy;
+		top: -25px;
+		left: 50%;
+		margin-left: -6px;
+	}
+
+	.legend {
+		font-size: 0.75em;
+		fill: black;
+	}
+</style>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.2/d3.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+<body>
+
+
+<script type="text/javascript">
+	d3.csv("baseball_data.csv", function(d) {
+		// transform data to integers and floats
+		d['height'] = +d['height'];
+		d['weight'] = +d['weight'];
+		d['avg'] = +d['avg'];
+		d['HR'] = +d['HR'];
+		// remove data rows where both homeruns and batting averages are equal to 0
+		if (d['avg'] !== 0 && d['HR'] !== 0) return d;
+	}, draw);
+</script>
+</body>
+</html>
