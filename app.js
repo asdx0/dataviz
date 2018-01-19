@@ -37,8 +37,8 @@
 					.range([padding, width - padding]);
 
 		var radiusScale = d3.scaleLinear()
-					.domain([0,2])
-					.range([0.5,10]);
+					.domain(d3.extent(data, d=> weightScale(d.weight) + heightScale(d.height)))
+					.range([2,10]);
 		d3.select("body")
 	    .append("h2")
 	    .text("Baseball Player Performance by Handedness, Height, and Weight");
@@ -108,8 +108,8 @@
 		  .append("rect")
 		    .attr("x", 80)
 		    .attr("y", 34)
-		    .attr("width", 110)
-		    .attr("height", 48)
+		    .attr("width", 160)
+		    .attr("height", 82)
 		    .attr("stroke", "#ccc")
 		    .attr("stroke-width", 1)
 		    .attr("fill", "white");
@@ -123,7 +123,7 @@
 		d3.select("svg")
 		  .append("text")
 			.text("Right-handed")
-			.attr("x", 105)
+			.attr("x", 110)
 			.attr("y", 50)
 			.attr("text-anchor", "start")
 			.attr("alignment-baseline", "middle")
@@ -131,7 +131,7 @@
 		d3.select("svg")
 		  .append("text")
 			.text("Left-handed")
-			.attr("x", 105)
+			.attr("x", 110)
 			.attr("y", 65)
 			.attr("text-anchor", "start")
 			.attr("alignment-baseline", "middle")
@@ -142,7 +142,35 @@
 			.attr("cy", 64)
 			.attr("r", 5)
 			.attr("fill", "orange")
-			.classed("toggle-left", true);
+			.classed("toggle-left", true)
+		d3.select("svg")
+		  .append("text")
+			.text("Smallest height/weight")
+			.attr("x", 110)
+			.attr("y", 85)
+			.attr("text-anchor", "start")
+			.attr("alignment-baseline", "middle")
+			.classed("legend", true);
+		d3.select("svg")
+		  .append("circle")
+		    .attr("cx", 95)
+			.attr("cy", 84)
+			.attr("r", 2)
+			.attr("fill", "#ccc")
+		d3.select("svg")
+		  .append("text")
+			.text("Largest height/weight")
+			.attr("x", 110)
+			.attr("y", 100)
+			.attr("text-anchor", "start")
+			.attr("alignment-baseline", "middle")
+			.classed("legend", true);
+		d3.select("svg")
+		  .append("circle")
+		    .attr("cx", 95)
+			.attr("cy", 99)
+			.attr("r", 10)
+			.attr("fill", "#ccc");
 
 		d3.select("svg")
 	  .append('text')
