@@ -12,9 +12,9 @@
 
 		// set width, height, and padding of svg
 
-		var width = 800;
-		var height = 600;
-		var padding = 30;
+		var width = 900;
+		var height = 700;
+		var padding = 40;
 
 		var hands = ['R', 'L'];
 
@@ -41,7 +41,7 @@
 					.range([0.5,10]);
 		d3.select("body")
 	    .append("h2")
-	    .text("Baseball Player Stats");
+	    .text("Baseball Player Performance by Handedness, Height, and Weight");
 
 	    var svg = d3.select("body")
 					.append("svg")
@@ -144,6 +144,23 @@
 			.attr("fill", "orange")
 			.classed("toggle-left", true);
 
+		d3.select("svg")
+	  .append('text')
+	    .attr('x', width / 2)
+	    .attr('y', height - padding)
+	    .attr('dy', '2.5em') // push down relative to x axis
+	    .style('text-anchor', 'middle')
+	    .style('font-size', '0.75em')
+	    .text("Batting Average")
 
+	    d3.select("svg")
+			.append("text")
+			.attr("transform", "rotate(-90)")
+			.attr("x", - 700 / 2 )
+			.attr("y", 30)
+			.attr("dy", "-1.5em")
+			.style("text-anchor", "middle")
+			.style("font-size", "0.75em")
+			.text("Homeruns");
 
 	}
