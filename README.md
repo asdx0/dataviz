@@ -16,6 +16,8 @@ After my feedback, I added my axis labels and changed my title to be more descri
 2. Need axis labels.
 3. Add background to svg and it's too small.
 
+Original chart before feedback is hosted on this website: http://starstack.io
+
 ## Resources
 
 Udacity's Data Visualization Course
